@@ -5,15 +5,20 @@ import TextField from '@mui/material/TextField';
 
 function TodoForm({ saveTodo }) {
     const [value, setValue] = useState('');
-    const changeHandle = event => setValue(event.target.value);
+
+    // handlers
+    const changeHandle = event => {
+        setValue(event.target.value);
+    }
     const submitHandle = event => {
         event.preventDefault();
         saveTodo(value);
+        setValue('');
     }
 
     return (
         <form onSubmit={submitHandle}>
-            <TextField id="todo" label="enter todo" variant="outlined" defaultValue={value} onChange={changeHandle}/>
+            <TextField id="todo" label="enter todo" variant="outlined" value={value} onChange={changeHandle}/>
         </form>
     )
 }
