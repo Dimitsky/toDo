@@ -19,11 +19,7 @@ function App() {
 	const saveTodoHandle = text => {
 		setTodos([
 			...todos, 
-			{
-				_id: uuidv4(), 
-				text, 
-				isDone: false, 
-			}
+			{_id: uuidv4(), text, isDone: false}
 		]);
 	}
 	const toggleTodoHandle = id => {
@@ -36,7 +32,7 @@ function App() {
 		}));
 	}
 	const removeTodoHandle = (id) => {
-		console.log(id);
+		setTodos([...todos.filter((todo) => todo._id !== id)]);
 	}
 
 	return (
